@@ -24,6 +24,8 @@ for(let i=0;i<btnObj.length;i++){
 }
 
 
+
+// create img tag
 let imgObj=[
     {
         img : "https://www.rnwmultimedia.edu.in/new_panel/uploads/city_image-1689422869872-961501515.png",
