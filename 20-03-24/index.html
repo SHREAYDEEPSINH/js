@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform">
+        <div>
+            <label for="name" id="label">Name: </label>
+            <input type="text" id="name"><br><br>
+      
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" id="email"><br><br>
+        </div>
+        <div>
+            <label for="tel">Phone no: </label>
+            <input type="tel" id="tel"><br><br>
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password"><br><br>
+        </div>
+        <input type="submit">
+    </form> <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone no </th>
+                <th>Password </th>
+                <th>Delate  </th>
+            </tr>
+        </thead>
+        <tbody id="bd">
+
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    let name=document.getElementById("name");
+    let email=document.getElementById("email");
+    let phone=document.getElementById("tel"); 
+    let password=document.getElementById("password"); 
+     
+    let arr=[];
+    
+    document.getElementById("myform").addEventListener("submit",function(e){
+        e.preventDefault();
+
+        let obj={
+            name:name.value,
+            email:email.value,
+            phone:phone.value,
+            password:password.value,
+        };
+
+      arr.push(obj);
+      display(arr);
+    })
+
+    function display(a){
+        bd.innerHTML="";
+
+        for(let i=0;i<a.length;i++){
+
+            let tr=document.createElement("tr");
+            let td1=document.createElement("td");
+            td1.innerText=a[i].name;
+
+            let td2=document.createElement("td");
+            td2.innerText=a[i].email;
+
+            let td3=document.createElement("td");
+            td3.innerText=a[i].phone;
+
+            let td4=document.createElement("td");
+            td4.innerText=a[i].password;
+
+            let td5=document.createElement("td");
+            td5.innerText="❎";
+            td5.style.cursor="pointer";
+             td5.addEventListener("click",function(e){
+                e.preventDefault();
+                e.target.parentNode.remove();
+             })
+
+            tr.append(td1,td2,td3,td4,td5);
+            bd.append(tr);
+           
+        }
+    }
+
+</script>

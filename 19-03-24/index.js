@@ -91,5 +91,4 @@ for(let i=0;i<imgObj.length;i++){
     console.log(h2);
     console.log(p);
 
-
 }
