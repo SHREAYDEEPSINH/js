@@ -12,24 +12,24 @@
         <div>
             <label for="name" id="label">Name: </label>
             <input type="text" id="name"><br><br>
-
-            <div>
-                <label for="email">Email: </label>
-                <input type="email" id="email"><br><br>
-            </div>
-            <div>
-                <label for="tel">Phone no: </label>
-                <input type="tel" id="tel"><br><br>
-            </div>
-            <div>
-                <label for="password">Password: </label>
-                <input type="password" id="password"><br><br>
-            </div>
-            <input type="submit">
+        </div>
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" id="email"><br><br>
+        </div>
+        <div>
+            <label for="tel">Phone no: </label>
+            <input type="tel" id="tel"><br><br>
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" id="password"><br><br>
+        </div>
+        <input type="submit">
     </form> <br><br>
 
     <button id="sorting">Sort</button> <br><br>
-    
+
     <table border="1">
         <thead>
             <tr>
@@ -51,7 +51,7 @@
     let email = document.getElementById("email");
     let phone = document.getElementById("tel");
     let password = document.getElementById("password");
-    let bd=document.getElementById("bd");
+    let bd = document.getElementById("bd");
     let btn2 = document.getElementById("sorting");
 
     let arr = [];
@@ -82,20 +82,15 @@
             password: password.value,
         }
         arr.push(obj);
-             
-            name.value="";
-            email.value="";
-            phone.value="";
-            paspassword="";
 
     });
 
 
     btn2.addEventListener("click", function () {
+        bd.innerHTML = "";
         arr.sort(function (a, b) {
             return a.phone - b.phone;
         })
-        bd.innerHTML="";    
 
         for (let i = 0; i < arr.length; i++) {
             console.log(arr[i]);
@@ -116,10 +111,7 @@
             tr.append(td1, td2, td3, td4);
             bd.append(tr);
 
-            name.value="";
-            email.value="";
-            phone.value="";
-            paspassword="";
+
         }
         console.log(arr);
 

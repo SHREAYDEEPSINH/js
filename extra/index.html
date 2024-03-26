@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myform{
+            height: auto;
+            width: 20%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid red;
+            background-color: rgb(187, 187, 187);
+        }
+        input{
+            height: 40px;
+            width: 60%;
+        }
+        #mytable{
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            border: 2px solid red;
+            background-color: rgb(187, 187, 187);
+        }
+        tr{
+            height: 40px;
+        }
+        td{
+            height: 40px;
+            border: 2px solid black;
+        }
+        #sort{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myform">
+        <label for="name">Name: </label>
+        <input type="text" id="name" placeholder="enter your name "><br><br>
+        <label for="number">phone: </label>
+        <input type="number" id="phone" placeholder="enter your number "><br><br>
+        <label for="password">password: </label>
+        <input type="password" id="password" placeholder="enter your password "><br><br>
+        <input type="submit">
+    </form> <br><br>
+    <button id="sort">sort</button> <br><br>
+    <table id="mytable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Password</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+            
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+   let name=document.getElementById("name");
+   let phone=document.getElementById("phone");
+   let password=document.getElementById("password");
+   let sort=document.getElementById("sort");
+
+  let arr=[];
+   document.getElementById("myform").addEventListener("submit",function(e){
+       e.preventDefault();
+       
+       let tr=document.createElement("tr");
+       let td1=document.createElement("td");
+       td1.innerText=name.value;
+       let td2=document.createElement("td");
+       td2.innerText=phone.value;
+       let td3=document.createElement("td");
+       td3.innerText=password.value;
+       let td4=document.createElement("td");
+       td4.innerText="❎";
+        
+       td4.addEventListener("click",function(e){
+         e.target.parentNode.remove();
+        //  arr.splice(i,1);
+       })
+    
+
+       tr.append(td1,td2,td3,td4);
+       tb.append(tr);
+
+       let obj={
+         name:name.value,
+         phone:phone.value,
+         password:password.value,
+       };
+      
+       arr.push(obj);
+   });
+
+   
+   sort.addEventListener("click",function(){
+    tb.innerHTML="";
+    arr.sort(function(a,b){
+        let aa=a.name.toLowerCase();
+        let bb=b.name.toLowerCase();
+
+        if(aa<bb){
+            return -1;
+        }
+    })
+    
+    for(let i=0;i<arr.length;i++){
+        
+        let tr=document.createElement("tr");
+        let td1=document.createElement("td");
+        td1.innerText=arr[i].name;
+        let td2=document.createElement("td");
+        td2.innerText=arr[i].phone;
+        let td3=document.createElement("td");
+        td3.innerText=arr[i].password;
+        let td4=document.createElement("td");
+       td4.innerText="❎";
+        
+       td4.addEventListener("click",function(e){
+         e.target.parentNode.remove();
+        //  arr.splice(i,1);
+       })
+
+        tr.append(td1,td2,td3,td4);
+        tb.append(tr);
+    }
+    console.log(arr);
+    
+   })
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myform{
+            height: auto;
+            width: 20%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid red;
+            background-color: rgb(187, 187, 187);
+        }
+        input{
+            height: 40px;
+            width: 60%;
+        }
+        #mytable{
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            border: 2px solid red;
+            background-color: rgb(187, 187, 187);
+        }
+        tr{
+            height: 40px;
+        }
+        td{
+            height: 40px;
+            border: 2px solid black;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <form id="myform">
+        <!-- <legend>log in page</legend> -->
+        <label for="email">email: </label>
+        <input type="email" id="email" placeholder="enter your email "><br><br>
+        <label for="password">password: </label>
+        <input type="password" id="password" placeholder="enter your password "><br><br>
+        <input type="submit" value="login"><br><br>
+        <button><a href="singup.html">singup</a></button>
+    </form> 
+</body>
+
+</html>
+<script>
+   let form=document.getElementById("myform");
+    let credentials=JSON.parse(localStorage.getItem("srv"));
+
+   form.addEventListener("submit",function(e){
+    e.preventDefault();
+
+    let email=form.email.value;
+    let password=form.password.value;
+
+    if(credentials.email==email && credentials.password==password){
+        window.location.href="index.html"
+    }else{
+        alert("wrong information");
+    }
+
+    console.log(email,password);
+   })
+</script>
