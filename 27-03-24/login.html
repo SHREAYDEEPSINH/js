@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myform{
+            height: auto;
+            width: 20%;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid red;
+            background-color: rgb(187, 187, 187);
+        }
+        input{
+            height: 40px;
+            width: 60%;
+        }
+        #mytable{
+            width: 30%;
+            margin: auto;
+            text-align: center;
+            border: 2px solid red;
+            background-color: rgb(187, 187, 187);
+        }
+        tr{
+            height: 40px;
+        }
+        td{
+            height: 40px;
+            border: 2px solid black;
+        }
+        button{
+            width: 20%;
+            height: 30px;
+            margin: auto;
+            background-color: red;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myform">
+        <label for="email">email: </label>
+        <input type="email" id="email" placeholder="enter your email "><br><br>
+        <label for="password">password: </label>
+        <input type="password" id="password" placeholder="enter your password "><br><br>
+        <input type="submit" value="login"><br><br>
+        <button><a href="singup.html">sinup</a></button>
+    </form> 
+</body>
+
+</html>
+<script>
+    let email=document.getElementById("email");
+    let password=document.getElementById("password");
+
+    let credentials=JSON.parse(localStorage.getItem("sr"));
+
+    document.getElementById("myform").addEventListener("submit",function(e){
+        e.preventDefault();
+
+        let email1=email.value;
+        let password1=password.value;
+        
+
+        if(credentials.email==email1 && credentials.password==password1){
+            window.location.href="index.html"
+        }else{
+            alert("wrpng data");
+        }
+
+    })
+</script>
